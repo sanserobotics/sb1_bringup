@@ -109,6 +109,13 @@ def generate_launch_description():
             }],
     ) 
 
+    # Topic relay needed for movement
+    topic_relay_node = Node(
+        package='topic_relay',
+        executable='topic_relay_node',
+        name='topic_relay_node',
+    )
+
     nodes = [
         control_node,
         robot_state_pub_node,
@@ -117,6 +124,7 @@ def generate_launch_description():
 #        delay_rviz_after_joint_state_broadcaster_spawner,
         delay_robot_controller_spawner_after_joint_state_broadcaster_spawner,
         lidar_node,
+        topic_relay_node,
     ]
-
+    
     return LaunchDescription(nodes)
