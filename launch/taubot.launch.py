@@ -116,6 +116,13 @@ def generate_launch_description():
         name='topic_relay_node',
     )
 
+    # IMU data
+    imu_node = Node(
+        package='mpu6050',
+        executable='mpu6050_node',
+        name='mpu6050_node',
+    )
+
     nodes = [
         control_node,
         robot_state_pub_node,
@@ -125,6 +132,7 @@ def generate_launch_description():
         delay_robot_controller_spawner_after_joint_state_broadcaster_spawner,
         lidar_node,
         topic_relay_node,
+        imu_node,
     ]
     
     return LaunchDescription(nodes)
