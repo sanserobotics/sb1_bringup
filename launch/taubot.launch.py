@@ -133,6 +133,13 @@ def generate_launch_description():
         name='stm32_reset_node',
     )
 
+    # webcam node
+    webcam_node = Node(
+        package='v4l2_camera',
+        executable='v4l2_camera_node',
+        name='webcam_node',
+    )
+
     nodes = [
         stm32_reset_node,
         control_node,
@@ -144,6 +151,7 @@ def generate_launch_description():
         lidar_node,
         topic_relay_node,
         imu_node,
+        webcam_node,
     ]
 
     

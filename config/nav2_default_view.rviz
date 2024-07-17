@@ -11,8 +11,10 @@ Panels:
         - /Controller1
         - /Controller1/Local Costmap1
         - /Controller1/Local Plan1
+        - /Image1
+        - /Image1/Topic1
       Splitter Ratio: 0.5833333134651184
-    Tree Height: 294
+    Tree Height: 216
   - Class: rviz_common/Selection
     Name: Selection
   - Class: rviz_common/Tool Properties
@@ -66,75 +68,6 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base_footprint:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        bottom_plane:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        cap_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        cap_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        cap_rings:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        chains:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        laser:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        left_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        right_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        screws:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        top_sides_plane:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ultrasonic:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        wheel_idlers:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
       Mass Properties:
         Inertia: false
         Mass: false
@@ -148,73 +81,13 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        base_footprint:
-          Value: true
-        base_link:
-          Value: true
-        bottom_plane:
-          Value: true
-        cap_2:
-          Value: true
-        cap_3:
-          Value: true
-        cap_rings:
-          Value: true
-        chains:
-          Value: true
-        laser:
-          Value: true
-        left_wheel:
-          Value: true
-        map:
-          Value: true
-        odom:
-          Value: true
-        right_wheel:
-          Value: true
-        screws:
-          Value: true
-        top_sides_plane:
-          Value: true
-        ultrasonic:
-          Value: true
-        wheel_idlers:
-          Value: true
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: false
       Tree:
-        map:
-          odom:
-            base_link:
-              base_footprint:
-                {}
-              bottom_plane:
-                {}
-              cap_2:
-                {}
-              cap_3:
-                {}
-              cap_rings:
-                {}
-              chains:
-                {}
-              laser:
-                {}
-              left_wheel:
-                {}
-              right_wheel:
-                {}
-              screws:
-                {}
-              top_sides_plane:
-                {}
-              ultrasonic:
-                {}
-              wheel_idlers:
-                {}
+        {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -624,6 +497,20 @@ Visualization Manager:
         Reliability Policy: Reliable
         Value: /waypoints
       Value: true
+    - Class: rviz_default_plugins/Image
+      Enabled: true
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Image
+      Normalize Range: true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /image_raw
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -683,9 +570,11 @@ Window Geometry:
   Height: 987
   Hide Left Dock: false
   Hide Right Dock: true
+  Image:
+    collapsed: false
   Navigation 2:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000016a0000037ffc020000000afb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000006400000040000000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003e00000164000000ca00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb00000018004e0061007600690067006100740069006f006e0020003201000001a8000002150000013000fffffffb0000001e005200650061006c00730065006e0073006500430061006d00650072006100000002c6000000c10000002800ffffff000000010000010f0000034afc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d0000034a000000a600fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004420000003efc0100000002fb0000000800540069006d00650100000000000004420000000000000000fb0000000800540069006d00650100000000000004500000000000000000000003900000037f00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000016a00000385fc020000000bfb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000005fb0000039500000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003b00000113000000c700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb00000018004e0061007600690067006100740069006f006e0020003201000001540000019d0000012300fffffffb0000001e005200650061006c00730065006e0073006500430061006d00650072006100000002c6000000c10000002800fffffffb0000000a0049006d00610067006501000002f7000000c90000002800ffffff000000010000010f0000034afc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d0000034a000000a000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004420000003efc0100000002fb0000000800540069006d00650100000000000004420000000000000000fb0000000800540069006d00650100000000000004500000000000000000000003900000038500000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   RealsenseCamera:
     collapsed: false
   Selection:
@@ -695,5 +584,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1280
-  X: 4160
-  Y: 0
+  X: 640
+  Y: 27
