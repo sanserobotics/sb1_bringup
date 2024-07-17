@@ -16,12 +16,12 @@ from launch import LaunchDescription
 from launch.actions import RegisterEventHandler
 from launch.event_handlers import OnProcessExit
 from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
-
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
+
     # Get URDF via xacro
     robot_description_content = Command(
         [
@@ -104,12 +104,44 @@ def generate_launch_description():
         name='sllidar_node',
         parameters=[{
             'serial_port':'/dev/ttyUSB0',
-            'serial_baudrate':115200,
+            'serial_baudrate':460800,
             'frame_id':'laser',
-            }],
+            'angle_compensate':True,
+            'inverted':False,
+            'scan_mode':'Standard',
+        }],
     ) 
 
+    # Topic relay needed for movement
+    topic_relay_node = Node(
+        package='topic_relay',
+        executable='topic_relay_node',
+        name='topic_relay_node',
+    )
+
+    # IMU data
+    imu_node = Node(
+        package='mpu6050',
+        executable='mpu6050_node',
+        name='mpu6050_node',
+    )
+
+    # STM32 reset
+    stm32_reset_node = Node(
+        package='stm32_reset',
+        executable='stm32_reset_node',
+        name='stm32_reset_node',
+    )
+
+    # webcam node
+    webcam_node = Node(
+        package='v4l2_camera',
+        executable='v4l2_camera_node',
+        name='webcam_node',
+    )
+
     nodes = [
+        stm32_reset_node,
         control_node,
         robot_state_pub_node,
 #        control_node,
@@ -117,6 +149,10 @@ def generate_launch_description():
 #        delay_rviz_after_joint_state_broadcaster_spawner,
         delay_robot_controller_spawner_after_joint_state_broadcaster_spawner,
         lidar_node,
+        topic_relay_node,
+        imu_node,
+        webcam_node,
     ]
 
+    
     return LaunchDescription(nodes)
