@@ -16,12 +16,12 @@ from launch import LaunchDescription
 from launch.actions import RegisterEventHandler
 from launch.event_handlers import OnProcessExit
 from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
-
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
+
     # Get URDF via xacro
     robot_description_content = Command(
         [
@@ -104,9 +104,12 @@ def generate_launch_description():
         name='sllidar_node',
         parameters=[{
             'serial_port':'/dev/ttyUSB0',
-            'serial_baudrate':115200,
+            'serial_baudrate':460800,
             'frame_id':'laser',
-            }],
+            'angle_compensate':True,
+            'inverted':False,
+            'scan_mode':'Standard',
+        }],
     ) 
 
     # Topic relay needed for movement
@@ -123,7 +126,15 @@ def generate_launch_description():
         name='mpu6050_node',
     )
 
+    # STM32 reset
+    stm32_reset_node = Node(
+        package='stm32_reset',
+        executable='stm32_reset_node',
+        name='stm32_reset_node',
+    )
+
     nodes = [
+        stm32_reset_node,
         control_node,
         robot_state_pub_node,
 #        control_node,
@@ -134,5 +145,6 @@ def generate_launch_description():
         topic_relay_node,
         imu_node,
     ]
+
     
     return LaunchDescription(nodes)
