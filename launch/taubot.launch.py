@@ -22,11 +22,11 @@ from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
 
-        # STM32 reset
-    stm32_reset_node = Node(
-        package='stm32_reset',
-        executable='stm32_reset_node',
-        name='stm32_reset_node',
+    # webcam node
+    webcam_node = Node(
+        package='v4l2_camera',
+        executable='v4l2_camera_node',
+        name='webcam_node',
     )
 
     # Topic relay needed for movement
@@ -41,13 +41,6 @@ def generate_launch_description():
         package='mpu6050',
         executable='mpu6050_node',
         name='mpu6050_node',
-    )
-
-    # webcam node
-    webcam_node = Node(
-        package='v4l2_camera',
-        executable='v4l2_camera_node',
-        name='webcam_node',
     )
 
     # lidar
@@ -65,6 +58,13 @@ def generate_launch_description():
             'scan_mode':'Standard',
         }],
     ) 
+
+    # STM32 reset
+    stm32_reset_node = Node(
+        package='stm32_reset',
+        executable='stm32_reset_node',
+        name='stm32_reset_node',
+    )
 
     # Get URDF via xacro
     robot_description_content = Command(
@@ -147,11 +147,11 @@ def generate_launch_description():
     )
 
     nodes = [
-        stm32_reset_node,
+#        webcam_node,
         topic_relay_node,
         imu_node,
-        webcam_node,
         lidar_node,
+        stm32_reset_node,
         delay_control_node_after_stm32_reset,
         delay_robot_state_pub_after_stm32_reset,
         delay_joint_state_broadcaster_spawner_after_stm32_reset,
